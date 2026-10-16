@@ -53,7 +53,7 @@ function createWindow() {
   mainWindow.on('closed', () => { mainWindow = null; });
   const home = () => mainWindow?.loadURL(config.siteUrl).catch(() => {});
   const appMenu = { label: 'Traslados', submenu: [
-    { label: `Acerca de Traslados ${app.getVersion()}`, click: () => dialog.showMessageBox(mainWindow, { type: 'info', title: 'Traslados', message: 'Traslados matrimoniales', detail: `Versión ${app.getVersion()}\nRecepción · Capellanía · Regreso\nRequiere conexión e inicio de sesión.`, icon: path.join(__dirname, '../assets/icon.png'), buttons: ['Listo'] }) },
+    { label: `Acerca de Traslados ${app.getVersion()}`, click: () => dialog.showMessageBox(mainWindow, { type: 'info', title: 'Traslados', message: 'Traslados matrimoniales', detail: `Versión ${app.getVersion()}\nRecepción · Capellanía · Regreso\nAcceso libre, sin cuenta ni clave. Requiere internet.`, icon: path.join(__dirname, '../assets/icon.png'), buttons: ['Listo'] }) },
     { label: 'Buscar actualizaciones…', click: () => checkForUpdates(mainWindow) },
     { type: 'separator' }, ...(process.platform === 'darwin' ? [{ role: 'hide', label: 'Ocultar Traslados' }, { role: 'hideOthers', label: 'Ocultar otras' }, { type: 'separator' }] : []),
     { role: 'quit', label: 'Salir de Traslados' }

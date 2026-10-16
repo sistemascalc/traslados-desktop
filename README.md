@@ -1,6 +1,6 @@
 # Traslados
 
-Aplicación Electron para Mac y Windows del registro privado de traslados matrimoniales.
+Aplicación Electron para Mac y Windows del registro compartido de traslados matrimoniales, sin cuenta ni clave.
 
 ## Instalar y usar
 
@@ -8,7 +8,7 @@ Descarga la versión más reciente desde [Releases](https://github.com/sistemasc
 
 - **Mac:** abre el DMG y arrastra Traslados a Aplicaciones. El instalador universal funciona en Intel y Apple Silicon.
 - **Windows:** ejecuta el instalador EXE y sigue los pasos.
-- Abre Traslados e inicia sesión con la cuenta autorizada en el registro. Necesita internet; los registros y fotos permanecen en el servicio privado existente.
+- Abre Traslados directamente: no se requiere cuenta de ChatGPT ni clave. Necesita internet. Cualquier persona con el enlace puede consultar nombres, datos y fotos, registrar ingresos y actualizar estados en el mismo registro compartido.
 - La recepción, entrega a la capellanía, regreso y avisos se administran en el mismo registro. Las fotos se amplían en un visor dentro de la ficha.
 - Para actualizar, selecciona **Traslados → Buscar actualizaciones**. La edición inicial permite descargar e instalar la versión más reciente de GitHub. Guarda cualquier formulario antes de cerrar la aplicación.
 
@@ -26,7 +26,7 @@ npm run build:mac -- --universal
 npm run build:win
 ```
 
-La aplicación mantiene una sesión propia; no copia las credenciales del navegador. El contenido web se ejecuta con sandbox, aislamiento de contexto y sin acceso a Node.js. Solo se permiten el sitio configurado y los dominios de autenticación indicados en `src/policy.cjs`.
+La aplicación no exige iniciar sesión. El contenido web se ejecuta con sandbox, aislamiento de contexto y sin acceso a Node.js. Solo se permiten el sitio configurado y los dominios de autenticación indicados en `src/policy.cjs`.
 
 ## Publicar una actualización
 
@@ -37,4 +37,4 @@ La aplicación mantiene una sesión propia; no copia las credenciales del navega
 
 Para habilitar actualización automática firmada, configura los secretos `MAC_CSC_LINK`, `MAC_CSC_KEY_PASSWORD`, `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID` y/o `WIN_CSC_LINK`, `WIN_CSC_KEY_PASSWORD`. El flujo activa el mecanismo automático únicamente al disponer de la firma de esa plataforma. En Mac se requieren firma Developer ID y notarización válidas. Nunca guardes certificados o claves en el repositorio.
 
-La actualización de la interfaz y del servidor se realiza en el servicio privado; este repositorio distribuye la aplicación de escritorio. No contiene copias de la base de datos ni de documentos.
+La actualización de la interfaz y del servidor se realiza en el sitio compartido; este repositorio distribuye la aplicación de escritorio. No contiene copias de la base de datos ni de documentos.
