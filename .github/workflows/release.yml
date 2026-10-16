@@ -48,6 +48,15 @@ jobs:
         env:
           CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
+      - name: Verificar arranque de Mac
+        if: matrix.platform == 'mac'
+        run: '"dist/mac-universal/Traslados.app/Contents/MacOS/Traslados" --verify-package'
+      - name: Verificar arranque de Windows
+        if: matrix.platform == 'win'
+        shell: pwsh
+        run: |
+          $process = Start-Process -FilePath "dist/win-unpacked/Traslados.exe" -ArgumentList "--verify-package" -Wait -PassThru
+          if ($process.ExitCode -ne 0) { exit 1 }
       - uses: actions/upload-artifact@v4
         with:
           name: instaladores-${{ matrix.platform }}
